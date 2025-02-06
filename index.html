@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #c3ff00;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        td {
+            font-size: 16px;
+            color: #555;
+        }
+
+        #tabel-pegawai {
+            margin-bottom: 20px;
+        }
+
+        /* Animasi untuk baris yang diklik */
+        tr.clicked {
+            background-color: #4CAF50; /* Warna latar belakang saat diklik */
+            color: white; /* Warna teks saat diklik */
+            transform: scale(1.05); /* Memberikan efek sedikit lebih besar */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Data Pegawai</h2>
+
+    <table id="tabel-pegawai">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Jabatan</th>
+                <th>Umur</th>
+                <th>Gaji</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data Pegawai akan ditampilkan di sini -->
+        </tbody>
+    </table>
+
+    <script>
+        const pegawai = [
+            { id: 1, nama: "Sayidina", jabatan: "Pegawai", umur: 30, gaji: 10000000 },
+            { id: 2, nama: "Senopati", jabatan: "Office Boy", umur: 25, gaji: 5000000 },
+            { id: 3, nama: "Kayla", jabatan: "Office girl", umur: 25, gaji: 7000000 },
+            { id: 4, nama: "Syafiq", jabatan: "Programer", umur: 15, gaji: 4000000 },
+            { id: 5, nama: "Abdullah", jabatan: "Boss", umur: 10000000, gaji: 11000000 }
+        ];
+
+        const tabelPegawai = document.getElementById("tabel-pegawai").getElementsByTagName('tbody')[0];
+
+        pegawai.forEach(p => {
+            const row = tabelPegawai.insertRow();
+            row.insertCell(0).innerText = p.id;
+            row.insertCell(1).innerText = p.nama;
+            row.insertCell(2).innerText = p.jabatan;
+            row.insertCell(3).innerText = p.umur;
+            row.insertCell(4).innerText = p.gaji.toLocaleString();
+
+            // Menambahkan event listener untuk klik pada setiap baris
+            row.addEventListener('click', () => {
+                row.classList.toggle('clicked'); // Toggle class 'clicked' saat baris diklik
+            });
+        });
+    </script>
+</body>
+</html>
